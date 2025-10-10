@@ -35,7 +35,7 @@ yarn-error.log*
 
 # Tailwind
 tailwind.config.js
-postcss.config.js
+#postcss.config.js
 
 # ----------------------
 # OS / Editor junk
@@ -49,9 +49,9 @@ Thumbs.db
 # Docker
 # ----------------------
 *.tar
-*.dockerfile
-**/Dockerfile
-docker-compose*.yml
+#*.dockerfile
+#**/Dockerfile
+#docker-compose*.yml
 
 # ----------------------
 # Misc
