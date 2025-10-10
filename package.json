@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "framer-motion": "^12.23.22"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "tailwindcss": "^4.1.14"
+  }
+}
