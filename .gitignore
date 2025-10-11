@@ -34,7 +34,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Tailwind
-tailwind.config.js
+#tailwind.config.js
 #postcss.config.js
 
 # ----------------------
