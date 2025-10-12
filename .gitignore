@@ -60,3 +60,5 @@ Thumbs.db
 .env.*.local
 *.bak
 *.swp
+.railway
+config.json
