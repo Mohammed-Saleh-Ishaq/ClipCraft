@@ -5,7 +5,7 @@ from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 import whisper
-from app.utils import run_ffmpeg_trim, MEDIA_DIR, get_duration, cleanup_old_media
+from .utils import run_ffmpeg_trim, MEDIA_DIR, get_duration, cleanup_old_media
 from .commands import parse_trim_command
 
 
