@@ -22,6 +22,8 @@ export default function Home() {
   const [trimRange, setTrimRange] = useState({ start: 0, end: 100 });
   const [snapToSentence, setSnapToSentence] = useState(false);
   const fileInputRef = useRef();
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
 
   useEffect(() => {
     return () => {
@@ -39,7 +41,7 @@ export default function Home() {
   return () => clearTimeout(t);
 }, [videoUrl]);
 
-
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
   const handleUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -69,7 +71,7 @@ export default function Home() {
       setLoading(false);
     }
   };
-
+  
   const sendCommand = async (cmd) => {
     if (!selectedFileName) {
       alert("Please upload a video first!");
