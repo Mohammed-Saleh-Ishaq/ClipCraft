@@ -41,7 +41,6 @@ export default function Home() {
   return () => clearTimeout(t);
 }, [videoUrl]);
 
-  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
   const handleUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
