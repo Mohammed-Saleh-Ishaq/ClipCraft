@@ -53,13 +53,14 @@ export default function Home() {
 
     try {
       setLoading(true);
-      const res = await fetch("http://127.0.0.1:8000/upload", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/upload`, {
+
         method: "POST",
         body: formData,
       });
       const data = await res.json();
       setSelectedFileName(data.filename);
-      setVideoUrl(`http://127.0.0.1:8000${data.url}`);
+      setVideoUrl(`${process.env.NEXT_PUBLIC_BACKEND_URL}${data.url}`);
       setStatus({ type: "success", text: "Upload successful" });
     } catch (err) {
       console.error(err);
@@ -82,7 +83,8 @@ export default function Home() {
       formData.append("cmd", cmd);
       formData.append("filename", selectedFileName);
 
-      const res = await fetch("http://127.0.0.1:8000/command", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/command`, {
+
         method: "POST",
         body: formData,
       });
@@ -90,7 +92,7 @@ export default function Home() {
       setOutput(data);
 
       if (data.action === "caption" && data.vtt_url) {
-        const vttFull = `http://127.0.0.1:8000${data.vtt_url}`;
+        const vttFull = `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.vtt_url}`;
         setCaptionsUrl(vttFull);
         // Optionally fetch and parse captions into editable state
         try {
@@ -103,7 +105,7 @@ export default function Home() {
         }
         setStatus({ type: "success", text: "Captions ready" });
       } else if (data.action === "trim" && data.url) {
-        setVideoUrl(`http://127.0.0.1:8000${data.url}`);
+        setVideoUrl(`${process.env.NEXT_PUBLIC_BACKEND_URL}${data.url}`);
         setStatus({ type: "success", text: "Trim completed" });
       } else if (data.action === "transcribe" && data.text) {
         setStatus({ type: "success", text: "Transcription ready" });
@@ -198,7 +200,7 @@ export default function Home() {
     const formData = new FormData();
     formData.append("cmd", cmd ); // ✅ send full command string
     formData.append("filename", selectedFileName);
-    const res = await fetch("http://127.0.0.1:8000/command", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/command`, {
       method: "POST",
       body: formData,
     });
@@ -206,7 +208,8 @@ export default function Home() {
     const data = await res.json();
     setOutput(data);
     if (data.url) {
-      setVideoUrl(`http://127.0.0.1:8000${data.url}`);
+      setVideoUrl(`${process.env.NEXT_PUBLIC_BACKEND_URL}${data.url}`);
+
       setStatus({ type: "success", text: "Trim completed" });
     } else {
       setStatus({ type: "info", text: data.message || "Trim done" });
@@ -235,7 +238,7 @@ export default function Home() {
       formData.append("burn_in", document.getElementById("burnIn")?.checked ? "1" : "0");
       formData.append("srt_only", document.getElementById("srtOnly")?.checked ? "1" : "0");
 
-      const res = await fetch("http://127.0.0.1:8000/command", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/command`, {
         method: "POST",
         body: formData,
       });
